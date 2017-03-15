@@ -1,30 +1,38 @@
-<!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hell-o-world!</title>
-</head>
-<body>
-    <div>
-        <h1><a href="">Today's thoughts</a></a></h1>
-        <strong>Nevermind</strong>
-        <p>Mambo django!</p>
-    </div>
+    <head>
+        <title>Hell-o-world!</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <meta charset="UTF-8">
+    </head>
 
-    <div>
-        <br>
-    </div>
+    <body>
 
-
-    {% for post in posts %}
-        <div>
-            <p>published: {{ post.published_date }}</p>
-            <h1><a href="">{{ post.title }}</a></h1>
-            <p>{{ post.text|linebreaksbr }}</p>
-            <br>
+        <div class="page-header">
+            <h1><a href="/">Today's thoughts</a></h1>
+            <strong>Nevermind</strong>
+            <p>Mambo django!</p>
         </div>
-    {% endfor %}
 
 
-</body>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>published: {{ post.published_date }}</p>
+                            </div>
+                            <h1><a href="">{{ post.title }}</a></h1>
+                            <p>{{ post.text|linebreaksbr }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+    </body>
 </html>
